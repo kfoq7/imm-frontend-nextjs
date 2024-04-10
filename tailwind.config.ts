@@ -2,8 +2,8 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    // './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/features/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
@@ -26,10 +26,12 @@ const config: Config = {
         'gray-1': '#384B56',
         'gray-2': '#7C8E98',
         'gray-3': '#C4CACE',
-        'gray-4': '#E8E9E9'
+        'gray-4': '#E8E9E9',
+        'gray-5': '#204860'
       }
     }
   },
   plugins: []
 }
+
 export default config
