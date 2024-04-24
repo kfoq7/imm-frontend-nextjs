@@ -1,6 +1,14 @@
-import { PATIENT_RESULT, PatientCard, ButtonStatus } from '@/features/patient'
+import {
+  PATIENT_RESULT,
+  PatientCard,
+  ButtonStatus,
+  useSelectState,
+  PatientCardProcess
+} from '@/features/patient'
 
 export default function PatientList() {
+  const {} = useSelectState()
+
   return (
     <main className="p-4">
       <div className="mx-auto max-w-5xl">
@@ -21,19 +29,24 @@ export default function PatientList() {
             </h3>
 
             <nav className="mt-10 flex items-center justify-center gap-x-2">
-              <ButtonStatus isSelected>Pendiente</ButtonStatus>
-              <ButtonStatus>En proceso</ButtonStatus>
+              <ButtonStatus>Pendiente</ButtonStatus>
+              <ButtonStatus isSelected>En proceso</ButtonStatus>
               <ButtonStatus>Finalizados</ButtonStatus>
             </nav>
           </header>
 
           <div className="mt-6">
-            <span className="text-sm font-bold text-gray-1">Hoy 8 de Marzo 2024</span>
+            {/* <span className="text-sm font-bold text-gray-1">Hoy 8 de Marzo 2024</span>
 
             <div className="mt-4 flex flex-col gap-y-4">
               {PATIENT_RESULT.map(patient => (
                 <PatientCard key={patient.id} patientInfo={patient} />
               ))}
+            </div> */}
+            <span className="text-sm font-bold text-gray-1">Hoy 24 de Agosto 2024</span>
+
+            <div className="mt-4 flex flex-col gap-y-4">
+              <PatientCardProcess />
             </div>
           </div>
         </section>
