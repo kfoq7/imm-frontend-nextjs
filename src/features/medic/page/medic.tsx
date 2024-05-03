@@ -13,8 +13,6 @@ export default function Medic() {
 
   return (
     <div className="flex flex-col items-center justify-center gap-y-5">
-      <div className="text-center">¿Con qué médico trabajarás hoy?</div>
-
       <MedicList />
 
       <Button onClick={handleOnClick}>Empezar!</Button>

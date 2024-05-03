@@ -2,15 +2,15 @@ import Link from 'next/link'
 
 interface Props {
   name: string
-  selected?: boolean
+  className?: string
 }
 
-export function MedicCard({ name, selected }: Props) {
+export function MedicCard({ name, className }: Props) {
   return (
-    <li className="max-w-sm rounded-md bg-white shadow">
+    <div className={className}>
       <Link href={`/#${name}`} className="size-full block p-4">
         <p>{name}</p>
       </Link>
-    </li>
+    </div>
   )
 }
