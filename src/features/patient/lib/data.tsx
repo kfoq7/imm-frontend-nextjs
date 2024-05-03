@@ -18,3 +18,18 @@ export const PATIENT_RESULT: Patient[] = [
     time: 1712614023765
   }
 ]
+
+export const PATIENT_TABS = [
+  {
+    name: 'pending',
+    tabTitle: 'Pendiente'
+  },
+  {
+    name: 'process',
+    tabTitle: 'En proceso'
+  },
+  {
+    name: 'finished',
+    tabTitle: 'Finalizados'
+  }
+]

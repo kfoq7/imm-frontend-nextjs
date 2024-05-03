@@ -5,9 +5,10 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isSelected?: boolean
 }
 
-export function ButtonStatus({ children, isSelected }: Props) {
+export function ButtonStatus({ children, isSelected, ...restProps }: Props) {
   return (
     <button
+      {...restProps}
       className={cn('relative bg-transparent px-7 py-3 text-lg font-semibold text-gray-1', {
         'text-primary-blue': isSelected
       })}

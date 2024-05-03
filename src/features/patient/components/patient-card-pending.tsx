@@ -6,7 +6,7 @@ interface Props {
   patientInfo: Patient
 }
 
-export function PatientCard({ patientInfo }: Props) {
+export function PatientCardPending({ patientInfo }: Props) {
   const { name, time, description } = patientInfo
 
   return (

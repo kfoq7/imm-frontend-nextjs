@@ -1,4 +1,4 @@
-export { PATIENT_RESULT } from './lib/data'
+export * from './lib/data'
 
 export * from './hooks'
 
