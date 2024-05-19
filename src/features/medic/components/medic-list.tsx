@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import { MedicCard } from './medic-card'
-import { MEDICS } from '../lib/data'
-import { cn } from '@/lib/utils'
+import { useListDoctorQuery } from '../hooks/use-list-doctor-query'
 
 export function MedicList() {
-  const [medic, setMedic] = useState(MEDICS[0])
+  const { doctorList, isLoading } = useListDoctorQuery()
+  const [medic, setMedic] = useState(doctorList)
+
+  if (isLoading) return null
 
   return (
     <>
@@ -17,22 +19,13 @@ export function MedicList() {
         <RadioGroup.Label className="text-center">¿Con qué médico trabajarás hoy?</RadioGroup.Label>
 
         <div className="flex flex-wrap items-center justify-center gap-4 md:flex-nowrap">
-          {MEDICS.map(({ name }) => (
-            <RadioGroup.Option key={name} value={medic}>
-              {({ active }) => (
-                <MedicCard
-                  className={cn(
-                    'max-w-sm rounded-md bg-white shadow hover:bg-[#EDF6FB] hover:text-black',
-                    {
-                      'bg-primary-blue text-white': active
-                    }
-                  )}
-                  key={name}
-                  name={name}
-                />
-              )}
-            </RadioGroup.Option>
-          ))}
+          {doctorList?.map(doctor => {
+            return (
+              <RadioGroup.Option key={doctor.id} value={medic}>
+                {({ active }) => <MedicCard medic={doctor} isSelected={active} />}
+              </RadioGroup.Option>
+            )
+          })}
         </div>
       </RadioGroup>
     </>

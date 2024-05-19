@@ -1,16 +1,26 @@
-import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import { useMedics } from '../hooks/useMedics'
+import { Medic } from '../types'
 
 interface Props {
-  name: string
-  className?: string
+  medic: Medic
+  isSelected: boolean
 }
 
-export function MedicCard({ name, className }: Props) {
+export function MedicCard({ medic, isSelected }: Props) {
+  const { setSelectedMedic } = useMedics()
+
+  const name = `${medic.name} ${medic.lastName}`
+
   return (
-    <div className={className}>
-      <Link href={`/#${name}`} className="size-full block p-4">
-        <p>{name}</p>
-      </Link>
+    <div
+      className={cn('max-w-sm rounded-md bg-white shadow hover:bg-[#EDF6FB] hover:text-black', {
+        'bg-primary-blue text-white hover:bg-primary-blue hover:text-white': isSelected
+      })}
+    >
+      <button className="block h-full w-full p-4" onClick={() => setSelectedMedic(medic)}>
+        <p className="text-wrap">{name}</p>
+      </button>
     </div>
   )
 }

@@ -9,6 +9,7 @@ import {
   PatientCardProcess
 } from '@/features/patient'
 import { cn } from '@/lib/utils'
+import { useMedics } from '@/features/medic'
 
 const ListPatientPeding = () => (
   <>
@@ -43,6 +44,7 @@ const ListPatientProcess = () => (
 )
 
 export default function PatientList() {
+  const { medic } = useMedics()
   const [patientTabs] = useState([
     {
       name: 'pending',
@@ -70,7 +72,7 @@ export default function PatientList() {
           </h2>
           <p className="text-sm text-gray-5">
             Hoy trabajas con{' '}
-            <span className="font-semibold">Maria de los Ángeles Martinez Fernandez</span>
+            <span className="font-semibold">{`${medic.name} ${medic.lastName}`}</span>
           </p>
         </div>
 

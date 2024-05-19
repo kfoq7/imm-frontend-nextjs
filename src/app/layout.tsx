@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-import { Header } from '@/features/core'
-
-const inter = Inter({ subsets: ['latin'] })
+import { inter } from '@/lib/fonts'
+import { Header, ReactQueryClient } from '@/features/core'
+import { MedictProvider } from '@/features/medic'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,11 +17,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex min-h-screen flex-col overflow-hidden">
-          <Header />
+        <ReactQueryClient>
+          <MedictProvider>
+            <div className="flex min-h-screen flex-col overflow-hidden">
+              <Header />
 
-          {children}
-        </div>
+              {children}
+            </div>
+          </MedictProvider>
+        </ReactQueryClient>
       </body>
     </html>
   )
