@@ -8,7 +8,7 @@ export default function Medic() {
   const router = useRouter()
 
   const handleOnClick = () => {
-    router.push('/patient-list')
+    router.push('/appointment-list')
   }
 
   return (

@@ -1,5 +1,5 @@
-import { PatientCardPending } from '@/features/patient'
 import { APPOINTMENT_RESULTS } from '../lib/data'
+import { AppointmentPendingCard } from './appointment-cards'
 
 export function ApppointmentsPendingList() {
   return (
@@ -8,7 +8,7 @@ export function ApppointmentsPendingList() {
 
       <div className="mt-4 flex flex-col gap-y-4">
         {APPOINTMENT_RESULTS.map(patient => (
-          <PatientCardPending key={patient.id} patientInfo={patient} />
+          <AppointmentPendingCard key={patient.id} appointment={patient} />
         ))}
       </div>
     </>

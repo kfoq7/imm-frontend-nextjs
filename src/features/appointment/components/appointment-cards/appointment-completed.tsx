@@ -1,46 +1,33 @@
 import Link from 'next/link'
-import { Button, ContainerCard } from '@/features/core'
-import { Search } from '@/features/appointment/ui/seach'
+import { parseURL } from '@/lib/utils'
 import type { Appointment } from '@/features/appointment/types'
+import { Search } from '@/features/appointment/ui/seach'
+import { AppointmentCard } from './appointment-card'
 
 interface Props {
   appointment: Appointment
 }
 
 export const AppointmentCompletedCard = ({ appointment }: Props) => {
-  const { name, time, description } = appointment
+  const { name, documentNumber } = appointment
+
+  const endpointName = parseURL(`${name} ${documentNumber}`)
 
   return (
     <>
       <Search />
 
-      <ContainerCard>
-        <span className="text-sm font-semibold text-primary-pink">{time}</span>
-
-        <div className="my-1">
-          <h2 className="text-2xl font-bold text-gray-1">{name}</h2>
-
-          <p className="mt-2 text-sm text-gray-1">{description}</p>
-        </div>
-
-        <div className="mt-2 flex items-center gap-x-20">
-          <div className="my-1">
-            <h2 className="uppercase">H.C</h2>
-            <span className="font-bold">S-1903</span>
-          </div>
-          <div className="my-1">
-            <h2 className="uppercase">Procedimiento</h2>
-            <span className="font-bold">EGI</span>
-          </div>
-        </div>
-
-        <div className="mt-6 flex items-center gap-x-10">
-          <Button className="w-[280px]">Ver informe</Button>
-          <Link href="/local-search" className="text-lg font-semibold text-primary-blue">
-            Ver informacion del paciente
+      <AppointmentCard
+        appointment={appointment}
+        action={
+          <Link
+            href={`/appointment-list/${endpointName}`}
+            className="w-[280px] rounded-md bg-primary-blue px-4 py-2.5 text-center text-lg font-semibold text-white"
+          >
+            Ver informe
           </Link>
-        </div>
-      </ContainerCard>
+        }
+      />
     </>
   )
 }
