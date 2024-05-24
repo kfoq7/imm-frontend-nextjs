@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Tab } from '@headlessui/react'
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import { cn } from '@/lib/utils'
 import { ApppointmentsPendingList } from './appointment-pending-list'
 import { ApppointmentsInProcessList } from './appointment-inprogress-list'
@@ -28,8 +28,8 @@ export function AppointmentList() {
 
   return (
     <div className="mt-14">
-      <Tab.Group>
-        <Tab.List className="flex items-center justify-center gap-x-2">
+      <TabGroup>
+        <TabList className="flex items-center justify-center gap-x-2">
           {patientTabs.map(({ name, tabTitle }) => (
             <Tab
               key={name}
@@ -57,13 +57,13 @@ export function AppointmentList() {
               )}
             </Tab>
           ))}
-        </Tab.List>
-        <Tab.Panels>
+        </TabList>
+        <TabPanels>
           {patientTabs.map(({ name, tab }) => (
-            <Tab.Panel key={name}>{tab}</Tab.Panel>
+            <TabPanel key={name}>{tab}</TabPanel>
           ))}
-        </Tab.Panels>
-      </Tab.Group>
+        </TabPanels>
+      </TabGroup>
     </div>
   )
 }
