@@ -9,7 +9,7 @@ interface Props {
 }
 
 export function AppointmentCard({ appointment, action, children }: Props) {
-  const { name, time, description } = appointment
+  const { id, name, time, description } = appointment
 
   return (
     <ContainerCard className="px-6 py-5">
@@ -35,7 +35,7 @@ export function AppointmentCard({ appointment, action, children }: Props) {
       <div className="mt-6 flex items-center gap-x-10">
         {action}
 
-        <Link href="/patient-info/" className="text-lg font-semibold text-primary-blue">
+        <Link href={`/patient-info/${id}`} className="text-lg font-semibold text-primary-blue">
           Ver informacion del paciente
         </Link>
       </div>

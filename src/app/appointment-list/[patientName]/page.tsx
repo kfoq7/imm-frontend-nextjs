@@ -1,4 +1,5 @@
 import { type Appointment, AppointmentCard } from '@/features/appointment'
+import { PatientExams } from '@/features/patient'
 
 const appointment: Appointment = {
   id: 2,
@@ -14,6 +15,8 @@ export default function Patient() {
   return (
     <>
       <AppointmentCard appointment={appointment} />
+
+      <PatientExams />
     </>
   )
 }
