@@ -1,1 +1,1 @@
-export * from './patient-exams'
+export { default as PatientExams } from './patient-exams'

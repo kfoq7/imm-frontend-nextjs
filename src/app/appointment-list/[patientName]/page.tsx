@@ -1,5 +1,9 @@
+import dynamic from 'next/dynamic'
 import { type Appointment, AppointmentCard } from '@/features/appointment'
-import { PatientExams } from '@/features/patient'
+
+const PatientExams = dynamic(() => import('@/features/patient/components/patient-exams'), {
+  ssr: false
+})
 
 const appointment: Appointment = {
   id: 2,
