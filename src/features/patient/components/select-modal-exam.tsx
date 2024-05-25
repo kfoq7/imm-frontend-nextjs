@@ -2,19 +2,14 @@
 
 import { useState } from 'react'
 import { Button } from '@/features/core'
-import { cn } from '@/lib/utils'
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
-import { Radio, RadioGroup } from '@headlessui/react'
+import { ModalExamList } from './moda-exam-list'
+import type { ExamInfo } from '../types'
 
 interface Props {
   isOpen: boolean
   onClose: (value: boolean) => void
-  setSelectedExams: (
-    value: {
-      name: string
-      content: string
-    }[]
-  ) => void
+  setSelectedExams: (value: ExamInfo[]) => void
 }
 
 const exams = [
@@ -37,14 +32,14 @@ const exams = [
 ]
 
 export function SelectModalExam({ isOpen, onClose, setSelectedExams }: Props) {
-  const [selectedTypeExams, setSelectedTypeExams] = useState<{ name: string; content: string }[]>(
-    []
-  )
+  const [selectedTypeExams, setSelectedTypeExams] = useState<ExamInfo[]>([])
 
-  const toggleCardSelection = (exam: { name: string; content: string }) => {
-    setSelectedTypeExams(prevSelected =>
-      prevSelected.includes(exam) ? prevSelected.filter(e => e !== exam) : [...prevSelected, exam]
-    )
+  const toggleCardSelection = (exam: ExamInfo) => {
+    setSelectedTypeExams(prevSelected => {
+      return prevSelected.includes(exam)
+        ? prevSelected.filter(e => e !== exam)
+        : [...prevSelected, exam]
+    })
   }
 
   const submitSelection = () => {
@@ -68,33 +63,12 @@ export function SelectModalExam({ isOpen, onClose, setSelectedExams }: Props) {
               </DialogTitle>
               <p className="text-gray-1">Puedes elegir más de uno</p>
             </div>
-            <RadioGroup
-              className="flex items-center justify-center gap-x-3"
-              onChange={toggleCardSelection}
-            >
-              {exams.map(exam => {
-                const { name } = exam
 
-                return (
-                  <Radio
-                    key={name}
-                    value={exam}
-                    as="div"
-                    className={cn(
-                      'h-44 w-full max-w-sm cursor-pointer rounded-md bg-white px-10 shadow hover:bg-[#EDF6FB] hover:text-black',
-                      {
-                        'bg-primary-blue text-white hover:bg-primary-blue hover:text-white':
-                          Boolean(selectedTypeExams.find(e => e.name === name))
-                      }
-                    )}
-                  >
-                    <div className="flex h-full items-center justify-center text-center">
-                      <span className="">{name}</span>
-                    </div>
-                  </Radio>
-                )
-              })}
-            </RadioGroup>
+            <ModalExamList
+              exams={exams}
+              selectedExams={selectedTypeExams}
+              toggleCardSelection={toggleCardSelection}
+            />
             <Button onClick={submitSelection}>Continuar</Button>
           </div>
         </DialogPanel>
