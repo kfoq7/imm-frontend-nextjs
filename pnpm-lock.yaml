@@ -11,6 +11,9 @@ importers:
       '@headlessui/react':
         specifier: ^2.0.3
         version: 2.0.3(react-dom@19.0.0-rc-4c2e457c7c-20240522(react@19.0.0-rc-4c2e457c7c-20240522))(react@19.0.0-rc-4c2e457c7c-20240522)
+      '@heroicons/react':
+        specifier: ^2.1.3
+        version: 2.1.3(react@19.0.0-rc-4c2e457c7c-20240522)
       '@tanstack/react-query':
         specifier: ^5.36.0
         version: 5.36.0(react@19.0.0-rc-4c2e457c7c-20240522)
@@ -132,6 +135,11 @@ packages:
     peerDependencies:
       react: ^18
       react-dom: ^18
+
+  '@heroicons/react@2.1.3':
+    resolution: {integrity: sha512-fEcPfo4oN345SoqdlCDdSa4ivjaKbk0jTd+oubcgNxnNgAfzysfwWfQUr+51wigiWHQQRiZNd1Ao0M5Y3M2EGg==}
+    peerDependencies:
+      react: '>= 16'
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -2156,6 +2164,10 @@ snapshots:
       '@tanstack/react-virtual': 3.5.0(react-dom@19.0.0-rc-4c2e457c7c-20240522(react@19.0.0-rc-4c2e457c7c-20240522))(react@19.0.0-rc-4c2e457c7c-20240522)
       react: 19.0.0-rc-4c2e457c7c-20240522
       react-dom: 19.0.0-rc-4c2e457c7c-20240522(react@19.0.0-rc-4c2e457c7c-20240522)
+
+  '@heroicons/react@2.1.3(react@19.0.0-rc-4c2e457c7c-20240522)':
+    dependencies:
+      react: 19.0.0-rc-4c2e457c7c-20240522
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
