@@ -10,7 +10,7 @@ import { ChevronDownIcon } from '@heroicons/react/16/solid'
 
 interface Props {
   label?: string
-  items: Record<string, any>[]
+  items: { id: number; value: string }[]
   selectedValue: { id: number; value: string }
   setSelectedValue: (value: { id: number; value: string }) => void
 }

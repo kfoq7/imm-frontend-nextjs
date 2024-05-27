@@ -1,21 +1,30 @@
 'use client'
 
-import { Fragment } from 'react'
 import { RadioGroup, Radio } from '@headlessui/react'
 import { SelectCheckbox } from '../ui/select-checkbox'
 
 interface Props {
   items: string[]
+  events?: boolean
   selectedValues: string[]
   toggleValuesSelection: (value: string) => void
 }
 
-export function MultiSelectCheckbox({ items, selectedValues, toggleValuesSelection }: Props) {
+export function MultiSelectCheckbox({
+  items,
+  events,
+  selectedValues,
+  toggleValuesSelection
+}: Props) {
   return (
-    <RadioGroup className="space-y-4" onChange={toggleValuesSelection}>
+    <RadioGroup className="space-y-8" onChange={toggleValuesSelection}>
       {items.map((value, index) => (
-        <Radio key={index} value={value}>
-          <SelectCheckbox label={value} checked={selectedValues.includes(value)} />
+        <Radio key={index} value={value} as="div" className="cursor-pointer">
+          <SelectCheckbox
+            label={value}
+            pointerEvents={events}
+            checked={selectedValues.includes(value)}
+          />
         </Radio>
       ))}
     </RadioGroup>
