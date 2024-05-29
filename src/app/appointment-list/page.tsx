@@ -1,7 +1,12 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { useMedics } from '@/features/medic'
-import { AppointmentList } from '@/features/appointment'
+
+const AppointmentList = dynamic(
+  () => import('@/features/appointment/components/appointment-list'),
+  { ssr: false }
+)
 
 export default function PatientList() {
   const { medic } = useMedics()

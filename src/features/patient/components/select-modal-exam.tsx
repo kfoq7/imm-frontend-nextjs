@@ -1,40 +1,45 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from '@/features/core'
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import { Button } from '@/features/core'
+import { ExamTabFormColposcopy } from '@/features/exams'
 import { ModalExamList } from './moda-exam-list'
-import type { ExamInfo } from '../types'
+import type { ExamTabContent } from '../types'
 
 interface Props {
   isOpen: boolean
   onClose: (value: boolean) => void
-  setSelectedExams: (value: ExamInfo[]) => void
+  setSelectedExams: (value: ExamTabContent[]) => void
 }
 
-const exams = [
+const exams: ExamTabContent[] = [
   {
     name: 'Colposcopia',
-    content: ''
+    content: '',
+    examForm: <ExamTabFormColposcopy />
   },
   {
     name: 'Ecografica Mamaria',
-    content: ''
+    content: 'HelloEcograficaMamaria',
+    examForm: null
   },
   {
     name: 'Ecografia Pelvica transadominal',
-    content: ''
+    content: 'HelloEcografia Pelvica transadominal',
+    examForm: null
   },
   {
     name: 'Ecografia Pelvica transvaginal',
-    content: ''
+    content: 'HelloEcografia Pelvica transvaginal',
+    examForm: null
   }
 ]
 
 export function SelectModalExam({ isOpen, onClose, setSelectedExams }: Props) {
-  const [selectedTypeExams, setSelectedTypeExams] = useState<ExamInfo[]>([])
+  const [selectedTypeExams, setSelectedTypeExams] = useState<ExamTabContent[]>([])
 
-  const toggleCardSelection = (exam: ExamInfo) => {
+  const toggleCardSelection = (exam: ExamTabContent) => {
     setSelectedTypeExams(prevSelected => {
       return prevSelected.includes(exam)
         ? prevSelected.filter(e => e !== exam)

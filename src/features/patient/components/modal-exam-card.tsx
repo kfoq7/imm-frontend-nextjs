@@ -1,9 +1,9 @@
-import { Radio, RadioGroup } from '@headlessui/react'
+import { Radio } from '@headlessui/react'
 import { cn } from '@/lib/utils'
-import type { ExamInfo } from '../types'
+import type { ExamTabContent } from '../types'
 
 interface Props {
-  exam: ExamInfo
+  exam: ExamTabContent
   isSelected: boolean
 }
 

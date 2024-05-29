@@ -7,7 +7,7 @@ import { ApppointmentsPendingList } from './appointment-pending-list'
 import { ApppointmentsInProcessList } from './appointment-inprogress-list'
 import { AppointmentsCompletedList } from './appointment-completed-list'
 
-export function AppointmentList() {
+export default function AppointmentList() {
   const [patientTabs] = useState([
     {
       name: 'pending',

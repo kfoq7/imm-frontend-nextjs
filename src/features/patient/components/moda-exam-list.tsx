@@ -1,11 +1,11 @@
 import { RadioGroup } from '@headlessui/react'
 import { ModalExamCard } from './modal-exam-card'
-import type { ExamInfo } from '../types'
+import type { ExamTabContent } from '../types'
 
 interface Props {
-  exams: ExamInfo[]
-  selectedExams: ExamInfo[]
-  toggleCardSelection: (value: ExamInfo) => void
+  exams: ExamTabContent[]
+  selectedExams: ExamTabContent[]
+  toggleCardSelection: (value: ExamTabContent) => void
 }
 
 export function ModalExamList({ exams, selectedExams, toggleCardSelection }: Props) {
