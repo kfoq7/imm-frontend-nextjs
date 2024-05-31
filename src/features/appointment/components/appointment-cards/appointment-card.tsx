@@ -9,7 +9,7 @@ interface Props {
 }
 
 export function AppointmentCard({ appointment, action, children }: Props) {
-  const { id, name, time, description } = appointment
+  const { id, name, time, description, process } = appointment
 
   return (
     <ContainerCard className="px-6 py-5">
@@ -26,7 +26,7 @@ export function AppointmentCard({ appointment, action, children }: Props) {
         </div>
         <div className="my-1">
           <h2 className="uppercase">Procedimiento</h2>
-          <span className="font-bold">EGI</span>
+          <span className="font-bold">{process}</span>
         </div>
       </div>
 
