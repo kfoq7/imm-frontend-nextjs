@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
-import { Button, SelectCheckbox } from '@/features/core'
-import { ExamTabForm } from '@/features/exams'
+import { Tab, TabGroup, TabList, TabPanels } from '@headlessui/react'
+import { ExamTabForm, useExams } from '@/features/exams'
 import { cn } from '@/lib/utils'
 import { SelectModalExam } from './select-modal-exam'
 import { ExamTabContent } from '../types'
+import { ExamFormAntecedentes } from './exam-form-antecedentes'
 
 const ExamTab = ({ label }: { label: string }) => (
   <Tab
@@ -25,22 +25,23 @@ const ExamTab = ({ label }: { label: string }) => (
 
 export default function PatientExams() {
   const [isOpen, setIsOpen] = useState(false)
-  const [selectedExams, setSelectedExams] = useState<ExamTabContent[]>([])
+  // const [selectedExams, setSelectedExams] = useState<ExamTabContent[]>([])
+  const { selectedTypeExams } = useExams()
 
   return (
     <>
       <SelectModalExam
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        setSelectedExams={setSelectedExams}
+        // setSelectedExams={setSelectedExams}
       />
 
       <div className="mt-10">
         <TabGroup>
           <TabList>
             <ExamTab label="Antecedentes" />
-            {selectedExams.map(({ name }) => (
-              <ExamTab key={name} label={name} />
+            {selectedTypeExams.map(({ name, label }) => (
+              <ExamTab key={name} label={label} />
             ))}
             <button
               className="border border-gray-400/20 bg-gray-4/20 px-5 py-3 text-xs font-medium text-primary-blue"
@@ -50,33 +51,9 @@ export default function PatientExams() {
             </button>
           </TabList>
           <TabPanels className="rounded-b-sm border-x border-b border-gray-400/20">
-            {/* <TabPanel className="h-[500px] max-h-[500px] w-full bg-white">
-              <div className="flex h-full flex-col items-center justify-center gap-y-4">
-                <div className="space-x-2 text-center">
-                  <span className="font-bold text-gray-1">¡Empecemos!</span>
-                  <h2 className="text-2xl text-gray-1">¿En qué etapa se encuentra la paciente?</h2>
-                </div>
+            <ExamFormAntecedentes />
 
-                <div className="mb-10 mt-6">
-                  <div className="space-y-2">
-                    <SelectCheckbox label="Pre puberal" checked={true} />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Button className="w-72 disabled:bg-primary-blue/40" disabled>
-                    Continuar
-                  </Button>
-                  <Button className="w-72 border border-primary-blue bg-white font-medium text-primary-blue">
-                    Responder más tarde
-                  </Button>
-                </div>
-              </div>
-            </TabPanel> */}
-            <ExamTabForm>
-              <></>
-            </ExamTabForm>
-            {selectedExams.map(({ name, content, examForm }) => (
+            {selectedTypeExams.map(({ name, content, examForm }) => (
               <ExamTabForm key={name}>
                 {content}
                 {examForm}

@@ -12,6 +12,8 @@ export function ExamFormAntecedentes() {
 
         <div className="mb-10 mt-6">
           <div className="space-y-2">
+            <SelectCheckbox label="Edad Feritl" checked={true} />
+            <SelectCheckbox label="Menospausica o post menopausica" checked={true} />
             <SelectCheckbox label="Pre puberal" checked={true} />
           </div>
         </div>

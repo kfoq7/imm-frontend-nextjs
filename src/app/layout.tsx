@@ -3,6 +3,8 @@ import './globals.css'
 import { inter } from '@/lib/fonts'
 import { Header, ReactQueryClient } from '@/features/core'
 import { MedictProvider } from '@/features/medic'
+import { ExamsProvider } from '@/features/exams'
+import { AppointmentProvider } from '@/features/appointment'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,11 +21,15 @@ export default function RootLayout({
       <body className={inter.className}>
         <ReactQueryClient>
           <MedictProvider>
-            <div className="flex min-h-screen flex-col overflow-hidden">
-              <Header />
+            <AppointmentProvider>
+              <ExamsProvider>
+                <div className="flex min-h-screen flex-col overflow-hidden">
+                  <Header />
 
-              {children}
-            </div>
+                  {children}
+                </div>
+              </ExamsProvider>
+            </AppointmentProvider>
           </MedictProvider>
         </ReactQueryClient>
       </body>

@@ -32,11 +32,9 @@ export function ExamTabFormColposcopy() {
 
   const toggleValuesSelection = (value: string) => {
     setSelectedValues(prevValues => {
-      const asdf = prevValues.includes(value)
+      return prevValues.includes(value)
         ? prevValues.filter(item => item !== value)
         : [...prevValues, value]
-      console.log(asdf)
-      return asdf
     })
   }
 
@@ -62,10 +60,10 @@ export function ExamTabFormColposcopy() {
             selectedValue={selectedVulva}
             setSelectedValue={value => setSelectedVulva}
             items={[
-              { id: 1, value: 'Normal' },
-              { id: 2, value: 'Anomalo' },
-              { id: 3, value: 'Histeractomia parcial' },
-              { id: 4, value: 'Histeretomia total' }
+              { value: 'Normal', label: 'Normal' },
+              { value: 'Anomalo', label: 'Anomalo' },
+              { value: 'Histeractomia parcial', label: 'Histeractomia parcial' },
+              { value: 'Histeretomia total', label: 'Histeretomia total' }
             ]}
           />
           {/* <Listbox
@@ -79,26 +77,26 @@ export function ExamTabFormColposcopy() {
               { id: 4, value: 'Histeretomia total' }
             ]}
           /> */}
-          <Listbox
+          <SelectListbox
             label="Vagina"
             selectedValue={selectedVagina}
-            setSelectedValue={setSelectedVagina}
+            setSelectedValue={() => {}}
             items={[
-              { id: 1, value: 'Normal' },
-              { id: 2, value: 'Prolapso genital' },
-              { id: 3, value: 'Malformaciones del himen' },
-              { id: 4, value: 'Asimetria de labios' },
-              { id: 5, value: 'Neoplasia' }
+              { value: 'Normal', label: 'Normal' },
+              { value: 'Prolapso genital', label: 'Prolapso genital' },
+              { value: 'Malformaciones del himen', label: 'Malformaciones del himen' },
+              { value: 'Asimetria de labios', label: 'Asimetria de labios' },
+              { value: 'Neoplasia', label: 'Neoplasia' }
             ]}
           />
-          <Listbox
+          <SelectListbox
             label="Periodo"
             selectedValue={selectedPeriodo}
-            setSelectedValue={setSelectedPeriodo}
+            setSelectedValue={() => {}}
             items={[
-              { id: 1, value: 'Normal' },
-              { id: 2, value: 'Episiorrafia' },
-              { id: 3, value: 'Otros' }
+              { value: 'Normal', label: 'Normal' },
+              { value: 'Episiorrafia', label: 'Episiorrafia' },
+              { value: 'Otros', label: 'Otros' }
             ]}
           />
         </div>
@@ -117,27 +115,27 @@ export function ExamTabFormColposcopy() {
               { id: 2, value: 'Prueba de Schiller (lugol)' }
             ]}
           /> */}
-          <Listbox
+          <SelectListbox
             selectedValue={selectedVagina}
-            setSelectedValue={setSelectedVagina}
+            setSelectedValue={() => {}}
             items={[
-              { id: 1, value: 'Visible' },
-              { id: 2, value: 'Parcialmente visible' },
-              { id: 3, value: 'No visible' }
+              { value: 'Visible', label: 'Visible' },
+              { value: 'Parcialmente visible', label: 'Parcialmente visible' },
+              { value: 'No visible', label: 'No visible' }
             ]}
           />
-          <Listbox
+          <SelectListbox
             selectedValue={selectedPeriodo}
-            setSelectedValue={setSelectedPeriodo}
+            setSelectedValue={() => {}}
             items={[
-              { id: 1, value: 'ZT1' },
-              { id: 2, value: 'ZT2' },
-              { id: 3, value: 'ZT3' }
+              { value: 'ZT1', label: 'ZT1' },
+              { value: 'ZT2', label: 'ZT2' },
+              { value: 'ZT3', label: 'ZT3' }
             ]}
           />
         </div>
       </ExamFormGroup>
-      <ExamFormGroup>
+      {/* <ExamFormGroup>
         <ExamFormSubtitle>Detalla los hallazgos normales</ExamFormSubtitle>
 
         <div className="mx-auto w-full max-w-[800px] divide-y-2 divide-primary-pink/20">
@@ -162,12 +160,19 @@ export function ExamTabFormColposcopy() {
             ]}
           />
         </div>
-      </ExamFormGroup>
-      <ExamFormGroup>
+      </ExamFormGroup> */}
+      {/* <ExamFormGroup>
         <ExamFormSubtitle>Detalla los hallazgos anormnales</ExamFormSubtitle>
-      </ExamFormGroup>
+      </ExamFormGroup> */}
       <ExamFormGroup>
         <ExamFormSubtitle>Añade alguan observación o hallazgo adicional</ExamFormSubtitle>
+
+        <div>
+          <textarea
+            className="w-full rounded-md border border-gray-300 px-3 py-2"
+            placeholder="Observaciones"
+          ></textarea>
+        </div>
       </ExamFormGroup>
       <ExamFormGroup>
         <ExamFormSubtitle>¿Cuál fue el resultado del examen?</ExamFormSubtitle>
@@ -197,50 +202,107 @@ export function ExamTabFormColposcopy() {
               { id: 12, value: 'Deformidad de labios de la vulva adquirida' }
             ]}
           /> */}
-          <Listbox
+          <SelectListbox
             label="Diagnóstico vagina"
             selectedValue={selectedVagina}
-            setSelectedValue={setSelectedVagina}
+            setSelectedValue={() => {}}
             items={[
-              { id: 1, value: 'Vagina normal' },
-              { id: 2, value: 'Vaginitis atrófica postmenopáusica' },
-              { id: 3, value: 'Vaginitis candidiásica' },
-              { id: 4, value: 'Prolapso de pared vaginal anterior' },
-              { id: 5, value: 'Prolapso de pared vaginal posterior' },
-              { id: 6, value: 'Prolapso de cuello uterino' },
-              { id: 7, value: 'Prolapso de perineo femenino' },
-              { id: 8, value: 'Prolapso uterovaginal completo' },
-              { id: 9, value: 'Prolapso uterovaginal incompleto' },
-              { id: 10, value: 'Prolapso de vagina poshisterectomía' },
-              { id: 11, value: 'Leucoplasia de vagina' }
+              { value: 'Vagina normal', label: 'Vagina normal' },
+              {
+                value: 'Vaginitis atrófica postmenopáusica',
+                label: 'Vaginitis atrófica postmenopáusica'
+              },
+              { value: 'Vaginitis candidiásica', label: 'Vaginitis candidiásica' },
+              {
+                value: 'Prolapso de pared vaginal anterior',
+                label: 'Prolapso de pared vaginal anterior'
+              },
+              {
+                value: 'Prolapso de pared vaginal posterior',
+                label: 'Prolapso de pared vaginal posterior'
+              },
+              { value: 'Prolapso de cuello uterino', label: 'Prolapso de cuello uterino' },
+              { value: 'Prolapso de perineo femenino', label: 'Prolapso de perineo femenino' },
+              { value: 'Prolapso uterovaginal completo', label: 'Prolapso uterovaginal completo' },
+              {
+                value: 'Prolapso uterovaginal incompleto',
+                label: 'Prolapso uterovaginal incompleto'
+              },
+              {
+                value: 'Prolapso de vagina poshisterectomía',
+                label: 'Prolapso de vagina poshisterectomía'
+              },
+              { value: 'Leucoplasia de vagina', label: 'Leucoplasia de vagina' }
             ]}
           />
-          <Listbox
+          <SelectListbox
             label="Diagnóstico cervix"
             selectedValue={selectedPeriodo}
-            setSelectedValue={setSelectedPeriodo}
+            setSelectedValue={() => {}}
             items={[
-              { id: 1, value: 'Cervix normal' },
-              { id: 2, value: 'Doble cuello uterino' },
-              { id: 3, value: 'Deformidad del cuello uterino (adquirida)' },
-              { id: 4, value: 'Cervicitis aguda' },
-              { id: 5, value: 'Cervicitis crónica' },
-              { id: 6, value: 'Hemorragia del cuello uterino (muñón)' },
-              { id: 7, value: 'Ausencia adquirida de útero con muñón cervical' },
-              { id: 8, value: 'Ectropión de cuello uterino' },
-              { id: 9, value: 'Ectropión de cuello uterino con cervicitis' },
-              { id: 10, value: 'Pólipo en el cuello uterino' },
-              { id: 11, value: 'Leucoplasia del cuello uterino' },
-              { id: 12, value: 'Neoplasia intraepitelial cervical grado I' },
-              { id: 13, value: 'Neoplasia intraepitelial cervical grado II' },
-              { id: 14, value: 'Neoplasia intraepitelial cervical grado III (displasia severa)' },
-              { id: 15, value: 'Neoplasia intraepitelial vaginal grado I' },
-              { id: 16, value: 'Neoplasia intraepitelial vaginal grado II' },
-              { id: 17, value: 'Neoplasia intraepitelial vaginal grado III (displasia severa)' },
-              { id: 18, value: 'Neoplasia intraepitelial de vulva grado I' },
-              { id: 19, value: 'Neoplasia intraepitelial de vulva grado II' },
-              { id: 20, value: 'Neoplasia intraepitelial de vulva grado III (displasia severa)' },
-              { id: 21, value: 'Carcinoma in situ del cuello del útero' }
+              { value: 'Cervix normal', label: 'Cervix normal' },
+              { value: 'Doble cuello uterino', label: 'Doble cuello uterino' },
+              {
+                value: 'Deformidad del cuello uterino (adquirida)',
+                label: 'Deformidad del cuello uterino (adquirida)'
+              },
+              { value: 'Cervicitis aguda', label: 'Cervicitis aguda' },
+              { value: 'Cervicitis crónica', label: 'Cervicitis crónica' },
+              {
+                value: 'Hemorragia del cuello uterino (muñón)',
+                label: 'Hemorragia del cuello uterino (muñón)'
+              },
+              {
+                value: 'Ausencia adquirida de útero con muñón cervical',
+                label: 'Ausencia adquirida de útero con muñón cervical'
+              },
+              { value: 'Ectropión de cuello uterino', label: 'Ectropión de cuello uterino' },
+              {
+                value: 'Ectropión de cuello uterino con cervicitis',
+                label: 'Ectropión de cuello uterino con cervicitis'
+              },
+              { value: 'Pólipo en el cuello uterino', label: 'Pólipo en el cuello uterino' },
+              { value: 'Leucoplasia del cuello uterino', label: 'Leucoplasia del cuello uterino' },
+              {
+                value: 'Neoplasia intraepitelial cervical grado I',
+                label: 'Neoplasia intraepitelial cervical grado I'
+              },
+              {
+                value: 'Neoplasia intraepitelial cervical grado II',
+                label: 'Neoplasia intraepitelial cervical grado II'
+              },
+              {
+                value: 'Neoplasia intraepitelial cervical grado III (displasia severa)',
+                label: 'Neoplasia intraepitelial cervical grado III (displasia severa)'
+              },
+              {
+                value: 'Neoplasia intraepitelial vaginal grado I',
+                label: 'Neoplasia intraepitelial vaginal grado I'
+              },
+              {
+                value: 'Neoplasia intraepitelial vaginal grado II',
+                label: 'Neoplasia intraepitelial vaginal grado II'
+              },
+              {
+                value: 'Neoplasia intraepitelial vaginal grado III (displasia severa)',
+                label: 'Neoplasia intraepitelial vaginal grado III (displasia severa)'
+              },
+              {
+                value: 'Neoplasia intraepitelial de vulva grado I',
+                label: 'Neoplasia intraepitelial de vulva grado I'
+              },
+              {
+                value: 'Neoplasia intraepitelial de vulva grado II',
+                label: 'Neoplasia intraepitelial de vulva grado II'
+              },
+              {
+                value: 'Neoplasia intraepitelial de vulva grado III (displasia severa)',
+                label: 'Neoplasia intraepitelial de vulva grado III (displasia severa)'
+              },
+              {
+                value: 'Carcinoma in situ del cuello del útero',
+                label: 'Carcinoma in situ del cuello del útero'
+              }
             ]}
           />
         </div>

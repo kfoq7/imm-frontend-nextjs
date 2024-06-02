@@ -16,6 +16,7 @@ export function ModalExamList({ exams, selectedExams, toggleCardSelection }: Pro
           key={exam.name}
           exam={exam}
           isSelected={Boolean(selectedExams.find(e => e.name === exam.name))}
+          thumbnail={exam.thumbnail}
         />
       ))}
     </RadioGroup>
